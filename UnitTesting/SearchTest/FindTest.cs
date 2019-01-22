@@ -62,5 +62,27 @@ namespace SearchTest
                 index++;
             }
         }
+
+        [TestMethod]
+        public void StressTest ()
+        {
+            int SIZE = 100000;
+            List<int> numbers = new List<int>();
+            for (int i = 1; i <= SIZE; i+=2)
+            {
+                numbers.Add(i);
+            }
+
+            int[] array = numbers.ToArray();
+            for (int i = 1; i <= SIZE; i += 2)
+            {
+                Assert.AreEqual((i-1)/2, SearchDemo.Find(numbers, i));
+            }
+
+            for (int i = 0; i <= SIZE; i += 2)
+            {
+                Assert.AreEqual(-(i/2 + 1), SearchDemo.Find(numbers, i));
+            }
+        }
     }
 }
