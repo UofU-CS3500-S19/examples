@@ -16,7 +16,7 @@ namespace LectureExamples
             // stored.  It is not required to be initialized, and if it is the
             // initial value is ignored.
             int value;
-            if (Int32.TryParse("45", out value))
+            if (int.TryParse("45", out value))
             {
                 Console.WriteLine("Parsed value: " + value);
             }
@@ -46,6 +46,9 @@ namespace LectureExamples
             int[] A = { 2, 9 };
             Console.WriteLine("Before " + A[0] + " " + A[1]);
             swap(ref A[0], ref A[1]);
+            int a = 7;
+            int b = 9;
+            swap(ref a, ref b);
             Console.WriteLine(" After " + A[0] + " " + A[1]);
         }
 
@@ -57,7 +60,6 @@ namespace LectureExamples
         public static int SolveQuadratic(double a, double b, double c, 
                                             out double x1, out double x2)
         {
-
             // Out parameters must be given values
             x1 = 0;
             x2 = 0;
