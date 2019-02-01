@@ -9,7 +9,7 @@ namespace RegexAndXML
 {
     public class RegexExamples
     {
-        public static void Main(string[] args)
+        public static void Mainx(string[] args)
         {
             // Phone number:  123-456-7890  (123) 456-7890
             Regex phone = new Regex(@"\b((\([2-9]\d\d\) \d{3}-\d{4})|([2-9]\d\d-\d{3}-\d{4}))\b");
@@ -40,7 +40,7 @@ namespace RegexAndXML
         }
 
 
-        public static void Mainx(string[] args)
+        public static void Main(string[] args)
         {
             // Two ways to create an "identifier" regex
             Regex r1 = new Regex("[a-zA-Z][a-zA-Z0-9]*");
