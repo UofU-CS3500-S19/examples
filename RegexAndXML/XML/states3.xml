@@ -2,7 +2,7 @@
 <States>
   <State Name="Utah" Capital="Salt Lake City" />
   <State Name="Nevada" Capital="Carson City" />
-  <State Namex="Arizona" Capital="Phoenix" />
+  <State Name="Arizona" Capital="Phoenix" />
   <State Name="California" Capital="Sacramento" />
   <State Name="Oregon" Capital="Salem" />
   <State Name="Washington" Capital="Olympia" />
