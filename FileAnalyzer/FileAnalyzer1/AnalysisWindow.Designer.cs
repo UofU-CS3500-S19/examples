@@ -43,7 +43,6 @@
             this.substringBox = new System.Windows.Forms.TextBox();
             this.fileDialog = new System.Windows.Forms.OpenFileDialog();
             this.countButton = new System.Windows.Forms.Button();
-            this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuBar.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -62,8 +61,7 @@
             // 
             this.fileMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.openItem,
-            this.closeItem,
-            this.newToolStripMenuItem});
+            this.closeItem});
             this.fileMenu.Name = "fileMenu";
             this.fileMenu.Size = new System.Drawing.Size(44, 24);
             this.fileMenu.Text = "File";
@@ -71,14 +69,14 @@
             // openItem
             // 
             this.openItem.Name = "openItem";
-            this.openItem.Size = new System.Drawing.Size(216, 26);
+            this.openItem.Size = new System.Drawing.Size(133, 26);
             this.openItem.Text = "Open ...";
             this.openItem.Click += new System.EventHandler(this.OpenItem_Click);
             // 
             // closeItem
             // 
             this.closeItem.Name = "closeItem";
-            this.closeItem.Size = new System.Drawing.Size(216, 26);
+            this.closeItem.Size = new System.Drawing.Size(133, 26);
             this.closeItem.Text = "Close";
             this.closeItem.Click += new System.EventHandler(this.CloseItem_Click);
             // 
@@ -167,12 +165,6 @@
             this.countButton.UseVisualStyleBackColor = true;
             this.countButton.Click += new System.EventHandler(this.CountButton_Click);
             // 
-            // newToolStripMenuItem
-            // 
-            this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
-            this.newToolStripMenuItem.Text = "New";
-            // 
             // AnalysisWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -216,7 +208,6 @@
         private System.Windows.Forms.TextBox lineCount;
         private System.Windows.Forms.OpenFileDialog fileDialog;
         private System.Windows.Forms.Button countButton;
-        private System.Windows.Forms.ToolStripMenuItem newToolStripMenuItem;
     }
 }
 

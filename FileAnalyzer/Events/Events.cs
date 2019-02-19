@@ -21,7 +21,7 @@ namespace Events
             provider.CommunicationEvent += capitalize;
             provider.CommunicationEvent += s => Console.WriteLine(s.ToLower());
             provider.CommunicationEvent += capitalize;
-            provider.CommunicationEvent -= capitalize;
+            //provider.CommunicationEvent -= capitalize;
 
             // Ask that a CommunicationEvent be fired
             provider.FireCommunicationEvent("HeLlO tHeRe");
