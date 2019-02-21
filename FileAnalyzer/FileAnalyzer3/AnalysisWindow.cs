@@ -136,6 +136,7 @@ namespace FileAnalyzer
             {
                 CloseEvent();
             }
+            //CloseEvent?.Invoke();
         }
 
         /// <summary>
