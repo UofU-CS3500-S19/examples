@@ -44,21 +44,21 @@ namespace ReaderWriterExample
         public static void Display(int id)
         {
             Delay();
-            Monitor.Enter(sync);
-            //listLock.EnterReadLock();
+            //Monitor.Enter(sync);
+            listLock.EnterReadLock();
             //myListLock.EnterReadLock();
 
             try
             {
                 Console.WriteLine("Begin read " + id);
                 Delay();
-                //Console.WriteLine(String.Join(", ", list));
+                Console.WriteLine(String.Join(", ", list));
                 Console.WriteLine("End read " + id);
             }
             finally
             {
-                Monitor.Exit(sync);
-                //listLock.ExitReadLock();
+                //Monitor.Exit(sync);
+                listLock.ExitReadLock();
                 //myListLock.ExitReadLock();
             }
         }
@@ -66,8 +66,8 @@ namespace ReaderWriterExample
         public static void Insert(int id)
         {
             Delay();
-            Monitor.Enter(sync);
-            //listLock.EnterWriteLock();
+            //Monitor.Enter(sync);
+            listLock.EnterWriteLock();
             //myListLock.EnterWriteLock();
 
             try
@@ -80,8 +80,8 @@ namespace ReaderWriterExample
             }
             finally
             {
-                Monitor.Exit(sync);
-                //listLock.ExitWriteLock();
+                //Monitor.Exit(sync);
+                listLock.ExitWriteLock();
                 //myListLock.ExitWriteLock();
             }
         }

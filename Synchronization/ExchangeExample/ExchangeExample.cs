@@ -39,14 +39,14 @@ namespace MonitorExample
 
         public static void Decrement()
         {
-            Console.WriteLine("Increment Starting");
+            Console.WriteLine("Decrement Starting");
             for (int i = 0; i < LIMIT; i++)
             {
                 while (Interlocked.Exchange(ref usingN, 1) != 0);
                 n--;
                 usingN = 0;
             }
-            Console.WriteLine("Increment Done");
+            Console.WriteLine("Decrement Done");
         }
     }
 }
