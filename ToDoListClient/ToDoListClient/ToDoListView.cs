@@ -27,6 +27,10 @@ namespace ToDoListClient
             allTaskButton.Enabled = state && IsUserRegistered;
             showCompletedTasksButton.Enabled = state && IsUserRegistered;
 
+            taskBox.Enabled = state;
+            nameBox.Enabled = state;
+            emailBox.Enabled = state;
+
             foreach (Control control in taskPanel.Controls)
             {
                 if (control is Button)
