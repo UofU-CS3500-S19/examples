@@ -3,6 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Rest;
 using System.Dynamic;
 using static System.Net.HttpStatusCode;
+using static System.Net.Http.HttpMethod;
 using System.Diagnostics;
 
 namespace UnitTestProject1
@@ -10,7 +11,7 @@ namespace UnitTestProject1
     [TestClass]
     public class ToDoTests
     {
-        private RestClient client = new RestClient("http://localhost:50000/");
+        private RestClient client = new RestClient("http://localhost:44444/ToDo/");
 
         [TestMethod]
         public void TestMethod1()
@@ -18,12 +19,12 @@ namespace UnitTestProject1
             dynamic user = new ExpandoObject();
             user.Name = "Joe";
             user.Email = "email";
-            Response r = client.DoPostAsync(user, "RegisterUser").Result;
-            Assert.AreEqual(Created, r.Status);
+            Response r = client.DoMethodAsync("POST", "RegisterUser", user).Result;
+            Assert.AreEqual(OK, r.Status);
             Assert.AreEqual(36, r.Data.Length);
 
             user.Name = "";
-            r = client.DoPostAsync(user, "RegisterUser").Result;
+            r = client.DoMethodAsync("POST", "RegisterUser", user).Result;
             Assert.AreEqual(Forbidden, r.Status);
         }
 
@@ -33,23 +34,22 @@ namespace UnitTestProject1
             dynamic user = new ExpandoObject();
             user.Name = "Joe";
             user.Email = "email";
-            Response r = client.DoPostAsync(user, "RegisterUser").Result;
-            Assert.AreEqual(Created, r.Status);
+            Response r = client.DoMethodAsync("POST", "RegisterUser", user).Result;
+            Assert.AreEqual(OK, r.Status);
             string userID = r.Data.ToString();
 
             dynamic item = new ExpandoObject();
             item.UserID = userID;
             item.Description = "Description 1";
-            item.Completed = false;
-            r = client.DoPostAsync(item, "AddItem").Result;
-            Assert.AreEqual(Created, r.Status);
+            r = client.DoMethodAsync("POST", "AddItem", item).Result;
+            Assert.AreEqual(OK, r.Status);
 
             item.UserID = null;
-            r = client.DoPostAsync(item, "AddItem").Result;
+            r = client.DoMethodAsync("POST", "AddItem", item).Result;
             Assert.AreEqual(Forbidden, r.Status);
 
             item.UserID = "missing";
-            r = client.DoPostAsync(item, "AddItem").Result;
+            r = client.DoMethodAsync("POST", "AddItem", item).Result;
             Assert.AreEqual(Forbidden, r.Status);
         }
 
@@ -59,22 +59,22 @@ namespace UnitTestProject1
             dynamic user = new ExpandoObject();
             user.Name = "Joe";
             user.Email = "email";
-            Response r = client.DoPostAsync(user, "RegisterUser").Result;
-            Assert.AreEqual(Created, r.Status);
+            Response r = client.DoMethodAsync("POST", "RegisterUser", user).Result;
+            Assert.AreEqual(OK, r.Status);
             string userID = r.Data.ToString();
 
             dynamic item = new ExpandoObject();
             item.UserID = userID;
             item.Description = "Description 1";
             item.Completed = false;
-            r = client.DoPostAsync(item, "AddItem").Result;
-            Assert.AreEqual(Created, r.Status);
+            r = client.DoMethodAsync("POST", "AddItem", item).Result;
+            Assert.AreEqual(OK, r.Status);
             string itemID = r.Data.ToString();
 
-            r = client.DoPutAsync(item, "MarkCompleted/" + itemID).Result;
-            Assert.AreEqual(OK, r.Status);
+            r = client.DoMethodAsync("PUT", "MarkCompleted/" + itemID, item).Result;
+            Assert.AreEqual(NoContent, r.Status);
 
-            r = client.DoPutAsync(item, "MarkCompleted/" + "missing").Result;
+            r = client.DoMethodAsync("PUT", "MarkCompleted/" + "missing", item).Result;
             Assert.AreEqual(Forbidden, r.Status);
         }
 
@@ -84,25 +84,25 @@ namespace UnitTestProject1
             dynamic user = new ExpandoObject();
             user.Name = "Joe";
             user.Email = "email";
-            Response r = client.DoPostAsync(user, "RegisterUser").Result;
-            Assert.AreEqual(Created, r.Status);
+            Response r = client.DoMethodAsync("POST", "RegisterUser", user).Result;
+            Assert.AreEqual(OK, r.Status);
             string userID = r.Data.ToString();
 
             dynamic item = new ExpandoObject();
             item.UserID = userID;
             item.Description = "Description 1";
             item.Completed = false;
-            r = client.DoPostAsync(item, "AddItem").Result;
-            Assert.AreEqual(Created, r.Status);
+            r = client.DoMethodAsync("POST", "AddItem", item).Result;
+            Assert.AreEqual(OK, r.Status);
             string itemID = r.Data.ToString();
 
-            r = client.DoDeleteAsync("DeleteItem/" + itemID).Result;
-            Assert.AreEqual(OK, r.Status);
+            r = client.DoMethodAsync("DELETE", "DeleteItem/" + itemID).Result;
+            Assert.AreEqual(NoContent, r.Status);
 
-            r = client.DoDeleteAsync("DeleteItem/" + itemID).Result;
+            r = client.DoMethodAsync("DELETE", "DeleteItem/" + itemID).Result;
             Assert.AreEqual(Forbidden, r.Status);
 
-            r = client.DoDeleteAsync("DeleteItem/" + "missing").Result;
+            r = client.DoMethodAsync("DELETE", "DeleteItem/" + "missing").Result;
             Assert.AreEqual(Forbidden, r.Status);
         }
 
@@ -112,48 +112,48 @@ namespace UnitTestProject1
             dynamic user = new ExpandoObject();
             user.Name = "Joe";
             user.Email = "email";
-            Response r = client.DoPostAsync(user, "RegisterUser").Result;
-            Assert.AreEqual(Created, r.Status);
+            Response r = client.DoMethodAsync("POST", "RegisterUser", user).Result;
+            Assert.AreEqual(OK, r.Status);
             string userID = r.Data.ToString();
 
             dynamic item = new ExpandoObject();
             item.UserID = userID;
             item.Description = "Description 1";
             item.Completed = false;
-            r = client.DoPostAsync(item, "AddItem").Result;
-            Assert.AreEqual(Created, r.Status);
+            r = client.DoMethodAsync("POST", "AddItem", item).Result;
+            Assert.AreEqual(OK, r.Status);
             string itemID1 = r.Data.ToString();
 
             item = new ExpandoObject();
             item.UserID = userID;
             item.Description = "Description 2";
             item.Completed = false;
-            r = client.DoPostAsync(item, "AddItem").Result;
-            Assert.AreEqual(Created, r.Status);
+            r = client.DoMethodAsync("POST", "AddItem", item).Result;
+            Assert.AreEqual(OK, r.Status);
             string itemID2 = r.Data.ToString();
 
             item = new ExpandoObject();
             item.UserID = userID;
             item.Description = "Description 3";
             item.Completed = false;
-            r = client.DoPostAsync(item, "AddItem").Result;
-            Assert.AreEqual(Created, r.Status);
+            r = client.DoMethodAsync("POST", "AddItem", item).Result;
+            Assert.AreEqual(OK, r.Status);
             string itemID3 = r.Data.ToString();
 
-            r = client.DoPutAsync(item, "MarkCompleted/" + itemID1).Result;
-            Assert.AreEqual(OK, r.Status);
+            r = client.DoMethodAsync("PUT", "MarkCompleted/" + itemID1, item).Result;
+            Assert.AreEqual(NoContent, r.Status);
 
-            r = client.DoDeleteAsync("DeleteItem/" + itemID3).Result;
-            Assert.AreEqual(OK, r.Status);
+            r = client.DoMethodAsync("DELETE", "DeleteItem/" + itemID3).Result;
+            Assert.AreEqual(NoContent, r.Status);
 
-            r = client.DoGetAsync("GetAllItems?user=missing").Result;
+            r = client.DoMethodAsync("GET", "GetAllItems/false/missing").Result;
             Assert.AreEqual(Forbidden, r.Status);
 
-            r = client.DoGetAsync("GetAllItems?user={0}", userID).Result;
+            r = client.DoMethodAsync("GET", "GetAllItems/false/" + userID).Result;
             Assert.AreEqual(OK, r.Status);
             Assert.AreEqual(2, r.Data.Count);
 
-            r = client.DoGetAsync("GetAllItems?user={0}&completed=true", userID).Result;
+            r = client.DoMethodAsync("GET", "GetAllItems/true/" + userID).Result;
             Assert.AreEqual(OK, r.Status);
             Assert.AreEqual(1, r.Data.Count);
         }

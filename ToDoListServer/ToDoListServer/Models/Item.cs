@@ -15,13 +15,8 @@ namespace ToDoListServer.Models
         /// <summary>
         /// ID of user who is placing item on the list
         /// </summary>
-        public string UserID { get; set; }
-
-        /// <summary>
-        /// For demo purposes
-        /// </summary>
         [DataMember(EmitDefaultValue = false)]
-        public int Age { get; set; }
+        public string UserID { get; set; }
 
         /// <summary>
         /// Description of item
