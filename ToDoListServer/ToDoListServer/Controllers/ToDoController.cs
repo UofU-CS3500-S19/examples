@@ -24,12 +24,12 @@ namespace ToDoListServer.Controllers
         [Route("ToDo/RegisterUser")]
         public string PostRegister(UserInfo user)
         {
+            if (user.Name == "stall")
+            {
+                Thread.Sleep(5000);
+            }
             lock (sync)
             {
-                if (user.Name == "stall")
-                {
-                    Thread.Sleep(5000);
-                }
                 if (user.Name == null || user.Name.Trim().Length == 0)
                 {
                     throw new HttpResponseException(HttpStatusCode.Forbidden);
