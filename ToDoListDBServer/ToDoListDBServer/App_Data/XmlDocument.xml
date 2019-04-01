@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <doc>
     <assembly>
-        <name>ToDoListServer</name>
+        <name>ToDoListDBServer</name>
     </assembly>
     <members>
         <member name="M:ToDoListServer.Areas.HelpPage.ApiDescriptionExtensions.GetFriendlyId(System.Web.Http.Description.ApiDescription)">

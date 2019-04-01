@@ -7,13 +7,13 @@ using System.Web;
 namespace ToDoListServer.Models
 {
     /// <summary>
-    /// An item on the ToDo list
+    /// A single item on a ToDo list
     /// </summary>
     [DataContract]
-    public class Item
+    public class ToDoItem
     {
         /// <summary>
-        /// ID of user who is placing item on the list
+        /// ID of item owner
         /// </summary>
         [DataMember(EmitDefaultValue = false)]
         public string UserID { get; set; }
@@ -22,5 +22,15 @@ namespace ToDoListServer.Models
         /// Description of item
         /// </summary>
         public string Description { get; set; }
+
+        /// <summary>
+        /// Whether or not item has been completed
+        /// </summary>
+        public bool Completed { get; set; }
+
+        /// <summary>
+        /// ID number of item
+        /// </summary>
+        public string ItemID { get; set; }
     }
 }

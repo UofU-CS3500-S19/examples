@@ -6,12 +6,12 @@ using System.Web;
 namespace ToDoListServer.Models
 {
     /// <summary>
-    /// A single item on a ToDo list
+    /// An item on the ToDo list
     /// </summary>
-    public class ToDoItem
+    public class Item
     {
         /// <summary>
-        /// ID of item owner
+        /// ID of user who is placing item on the list
         /// </summary>
         public string UserID { get; set; }
 
@@ -19,15 +19,5 @@ namespace ToDoListServer.Models
         /// Description of item
         /// </summary>
         public string Description { get; set; }
-
-        /// <summary>
-        /// Whether or not item has been completed
-        /// </summary>
-        public bool Completed { get; set; }
-
-        /// <summary>
-        /// ID number of item
-        /// </summary>
-        public string ItemID { get; set; }
     }
 }

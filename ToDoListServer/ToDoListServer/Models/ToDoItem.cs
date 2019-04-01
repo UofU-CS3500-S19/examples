@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Web;
 
 namespace ToDoListServer.Models
@@ -8,6 +9,7 @@ namespace ToDoListServer.Models
     /// <summary>
     /// A single item on a ToDo list
     /// </summary>
+    [DataContract]
     public class ToDoItem
     {
         /// <summary>
@@ -28,6 +30,7 @@ namespace ToDoListServer.Models
         /// <summary>
         /// ID number of item
         /// </summary>
+        [DataMember(EmitDefaultValue = false)]
         public string ItemID { get; set; }
     }
 }
