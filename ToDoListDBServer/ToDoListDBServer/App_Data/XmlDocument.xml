@@ -486,7 +486,7 @@
             Defines and implements the service interface for the server
             </summary>
         </member>
-        <member name="M:ToDoListServer.Controllers.ToDoController.PostRegister(ToDoListServer.Models.UserInfo)">
+        <member name="M:ToDoListServer.Controllers.ToDoController.PostRegister(ToDoListServer.Models.UserInfo,ToDoListServer.Models.UserInfo)">
             <summary>
             Registers a new user.
             If either user.Name or user.Email is null or is empty after trimming, responds with status code Forbidden.
